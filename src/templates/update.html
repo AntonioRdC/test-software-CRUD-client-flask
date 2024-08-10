@@ -1,0 +1,146 @@
+{% extends 'base.html' %} {% block head %}
+<title>Atualizar Cliente</title>
+{% endblock %} {% block body %}
+<h3>Atualizar Cliente</h3>
+
+<form
+  action="{{ url_for('template.update_client', id=client.id) }}"
+  method="POST"
+>
+  <div class="mb-3">
+    <label for="name" class="form-label">Nome</label>
+    <input
+      class="form-control"
+      type="text"
+      name="name"
+      id="name"
+      value="{{ client.name }}"
+      required
+      autofocus
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="cpf" class="form-label">CPF</label>
+    <input
+      class="form-control"
+      type="text"
+      name="cpf"
+      id="cpf"
+      value="{{ client.cpf }}"
+      required
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="street" class="form-label">Rua</label>
+    <input
+      class="form-control"
+      type="text"
+      name="street"
+      id="street"
+      value="{{ client.street }}"
+      required
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="number" class="form-label">Número</label>
+    <input
+      class="form-control"
+      type="text"
+      name="number"
+      id="number"
+      value="{{ client.number }}"
+      required
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="complement" class="form-label">Complemento</label>
+    <input
+      class="form-control"
+      type="text"
+      name="complement"
+      id="complement"
+      value="{{ client.complement }}"
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="neighborhood" class="form-label">Bairro</label>
+    <input
+      class="form-control"
+      type="text"
+      name="neighborhood"
+      id="neighborhood"
+      value="{{ client.neighborhood }}"
+      required
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="zip_code" class="form-label">CEP</label>
+    <input
+      class="form-control"
+      type="text"
+      name="zip_code"
+      id="zip_code"
+      value="{{ client.zip_code }}"
+      required
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="city" class="form-label">Cidade</label>
+    <input
+      class="form-control"
+      type="text"
+      name="city"
+      id="city"
+      value="{{ client.city }}"
+      required
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="state" class="form-label">Estado</label>
+    <input
+      class="form-control"
+      type="text"
+      name="state"
+      id="state"
+      value="{{ client.state }}"
+      required
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="phone" class="form-label">Telefone</label>
+    <input
+      class="form-control"
+      type="text"
+      name="phone"
+      id="phone"
+      value="{{ client.phone }}"
+      required
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="email" class="form-label">Email</label>
+    <input
+      class="form-control"
+      type="email"
+      name="email"
+      id="email"
+      value="{{ client.email }}"
+      required
+    />
+  </div>
+
+  <div class="mb-3">
+    <button type="submit" class="btn btn-primary mb-3">Atualizar</button>
+  </div>
+</form>
+{% endblock %}

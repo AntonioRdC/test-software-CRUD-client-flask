@@ -1,6 +1,7 @@
 from flask import Flask
 from database.database import db
 from controllers.api import api
+from controllers.template import template
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database.db"
@@ -11,6 +12,7 @@ with app.app_context():
     db.create_all()
 
 app.register_blueprint(api)
+app.register_blueprint(template)
 
 if __name__ == "__main__":
     app.run(debug=True)

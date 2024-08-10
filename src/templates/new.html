@@ -1,0 +1,218 @@
+{% extends 'base.html' %} {% block head %}
+<title>Adicionar Novo Cliente</title>
+{% endblock %} {% block body %}
+<h3>Adicionar Novo Cliente</h3>
+
+{% with messages = get_flashed_messages() %} {% if messages %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  {{ messages[0] }}
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+<script>
+  $(".alert")
+    .delay(5000)
+    .slideUp(200, function () {
+      $(this).alert("close");
+    });
+</script>
+{% endif %} {% endwith %}
+
+<form
+  action="{{ url_for('template.create_client') }}"
+  method="POST"
+  autocomplete="off"
+>
+  <div class="mb-3">
+    <label for="name" class="form-label">Nome</label>
+    <input
+      class="form-control"
+      type="text"
+      name="name"
+      id="name"
+      placeholder="Informe o nome do cliente"
+      required
+      autofocus
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="cpf" class="form-label">CPF</label>
+    <input
+      class="form-control"
+      type="text"
+      name="cpf"
+      id="cpf"
+      placeholder="Informe o CPF do cliente"
+      required
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="street" class="form-label">Rua</label>
+    <input
+      class="form-control"
+      type="text"
+      name="street"
+      id="street"
+      placeholder="Informe a rua do cliente"
+      required
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="number" class="form-label">Número</label>
+    <input
+      class="form-control"
+      type="text"
+      name="number"
+      id="number"
+      placeholder="Informe o número da residência do cliente"
+      required
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="complement" class="form-label">Complemento</label>
+    <input
+      class="form-control"
+      type="text"
+      name="complement"
+      id="complement"
+      placeholder="Informe o complemento (opcional)"
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="neighborhood" class="form-label">Bairro</label>
+    <input
+      class="form-control"
+      type="text"
+      name="neighborhood"
+      id="neighborhood"
+      placeholder="Informe o bairro do cliente"
+      required
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="zip_code" class="form-label">CEP</label>
+    <input
+      class="form-control"
+      type="text"
+      name="zip_code"
+      id="zip_code"
+      placeholder="Informe o CEP do cliente"
+      required
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="city" class="form-label">Cidade</label>
+    <input
+      class="form-control"
+      type="text"
+      name="city"
+      id="city"
+      placeholder="Informe a cidade do cliente"
+      required
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="state" class="form-label">Estado</label>
+    <input
+      class="form-control"
+      type="text"
+      name="state"
+      id="state"
+      placeholder="Informe o estado do cliente"
+      required
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="phone" class="form-label">Telefone</label>
+    <input
+      class="form-control"
+      type="text"
+      name="phone"
+      id="phone"
+      placeholder="Informe o telefone do cliente"
+      required
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="email" class="form-label">Email</label>
+    <input
+      class="form-control"
+      type="email"
+      name="email"
+      id="email"
+      placeholder="Informe o email do cliente"
+      required
+    />
+  </div>
+
+  <div class="mb-3">
+    <button type="submit" class="btn btn-primary mb-3">Cadastrar</button>
+  </div>
+</form>
+
+<h3>Clientes Cadastrados</h3>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>CPF</th>
+      <th>Rua</th>
+      <th>Número</th>
+      <th>Complemento</th>
+      <th>Bairro</th>
+      <th>CEP</th>
+      <th>Cidade</th>
+      <th>Estado</th>
+      <th>Telefone</th>
+      <th>Email</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for client in clients %}
+    <tr>
+      <td>{{ client.id }}</td>
+      <td>{{ client.name }}</td>
+      <td>{{ client.cpf }}</td>
+      <td>{{ client.street }}</td>
+      <td>{{ client.number }}</td>
+      <td>{{ client.complement }}</td>
+      <td>{{ client.neighborhood }}</td>
+      <td>{{ client.zip_code }}</td>
+      <td>{{ client.city }}</td>
+      <td>{{ client.state }}</td>
+      <td>{{ client.phone }}</td>
+      <td>{{ client.email }}</td>
+      <td>
+        <a
+          href="{{ url_for('template.update_client', id=client.id) }}"
+          class="btn btn-primary btn-sm"
+          >Editar</a
+        >
+        <a
+          href="{{ url_for('template.delete_client', id=client.id) }}"
+          class="btn btn-danger btn-sm"
+          >Deletar</a
+        >
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends 'base.html' %} {% block head %}
+<title>Listagem de Clientes</title>
+{% endblock %} {% block body %} {% if clients %}
+<h3>Clientes</h3>
+<table class="table">
+  <tr>
+    <td>ID</td>
+    <td>Nome</td>
+    <td>CPF</td>
+    <td>Rua</td>
+    <td>Número</td>
+    <td>Complemento</td>
+    <td>Bairro</td>
+    <td>CEP</td>
+    <td>Cidade</td>
+    <td>Estado</td>
+    <td>Telefone</td>
+    <td>Email</td>
+    <td>Atualizar</td>
+    <td>Deletar</td>
+  </tr>
+  {% for client in clients %}
+  <tr>
+    <td>{{ client.id }}</td>
+    <td>{{ client.name }}</td>
+    <td>{{ client.cpf }}</td>
+    <td>{{ client.street }}</td>
+    <td>{{ client.number }}</td>
+    <td>{{ client.complement }}</td>
+    <td>{{ client.neighborhood }}</td>
+    <td>{{ client.zip_code }}</td>
+    <td>{{ client.city }}</td>
+    <td>{{ client.state }}</td>
+    <td>{{ client.phone }}</td>
+    <td>{{ client.email }}</td>
+    <td>
+      <a
+        class="btn btn-primary"
+        href='{{ url_for("template.update_client", id=client.id) }}'
+        >Editar</a
+      >
+    </td>
+    <td>
+      <a
+        class="btn btn-danger"
+        href='{{ url_for("template.delete_client", id=client.id) }}'
+        >Deletar</a
+      >
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% else %}
+<h3>Ainda não existem clientes cadastrados...</h3>
+{% endif %}
+<div>
+  <h3>
+    <a class="btn btn-primary" href='{{ url_for("template.create_client") }}'
+      >Adicionar Cliente</a
+    >
+  </h3>
+</div>
+{% endblock %}
