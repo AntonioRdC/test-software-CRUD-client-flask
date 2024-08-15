@@ -1,0 +1,67 @@
+[
+  {
+    "name": "Maria Oliveira",
+    "cpf": "89527329019",
+    "street": "Avenida Paulista",
+    "number": "456",
+    "complement": "Sala 202",
+    "neighborhood": "Bela Vista",
+    "zip_code": "98765-432",
+    "city": "São Paulo",
+    "state": "SP",
+    "phone": "(11) 91234-5678",
+    "email": "maria.oliveira@example.com"
+  },
+  {
+    "name": "João Silva",
+    "cpf": "04758809275",
+    "street": "Rua das Flores",
+    "number": "123",
+    "complement": "Apto 101",
+    "neighborhood": "Jardim das Rosas",
+    "zip_code": "12345-678",
+    "city": "São Paulo",
+    "state": "SP",
+    "phone": "(11) 98765-4321",
+    "email": "joao.silva@example.com"
+  },
+  {
+    "name": "Carlos Pereira",
+    "cpf": "43442438039",
+    "street": "Rua do Comércio",
+    "number": "789",
+    "complement": "Casa",
+    "neighborhood": "Centro",
+    "zip_code": "11223-445",
+    "city": "Rio de Janeiro",
+    "state": "RJ",
+    "phone": "(21) 99876-5432",
+    "email": "carlos.pereira@example.com"
+  },
+  {
+    "name": "Ana Souza",
+    "cpf": "42495230040",
+    "street": "Rua das Acácias",
+    "number": "321",
+    "complement": "Cobertura 303",
+    "neighborhood": "Jardim Botânico",
+    "zip_code": "55667-889",
+    "city": "Belo Horizonte",
+    "state": "MG",
+    "phone": "(31) 98765-1234",
+    "email": "ana.souza@example.com"
+  },
+  {
+    "name": "Roberto Lima",
+    "cpf": "16232484002",
+    "street": "Rua do Sol",
+    "number": "654",
+    "complement": "Bloco B, Apto 202",
+    "neighborhood": "Praia do Canto",
+    "zip_code": "77889-112",
+    "city": "Vitória",
+    "state": "ES",
+    "phone": "(27) 91234-5678",
+    "email": "roberto.lima@example.com"
+  }
+]

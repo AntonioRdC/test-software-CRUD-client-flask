@@ -1,7 +1,6 @@
 from sqlalchemy.orm import Mapped, mapped_column
 from sqlalchemy import Integer, String
 
-from validators.client_validator import Validator
 from database.database import db
 
 
@@ -20,12 +19,10 @@ class Client(db.Model):
     email: Mapped[str] = mapped_column(String)
 
     def __init__(self, name, cpf, street, number, complement, neighborhood, zip_code, city, state, phone, email):
-        self.name = Validator.validate_name(name)
-        self.cpf = Validator.validate_cpf(cpf)
-        self.email = Validator.validate_email(email)
+        self.name = name
+        self.cpf = cpf
+        self.email = email
         self.phone = phone
-        street, number, complement, neighborhood, zip_code, city, state = Validator.validate_address(
-            street, number, complement, neighborhood, zip_code, city, state)
         self.street = street
         self.number = number
         self.complement = complement
