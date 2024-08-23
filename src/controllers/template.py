@@ -5,7 +5,6 @@ from models.client_model import Client
 from validators.client_validator import format_text, validate_address, validate_cpf, validate_email, validate_name
 from database.database import db
 
-# Configure logging
 logging.basicConfig(level=logging.DEBUG)
 
 template = Blueprint('template', __name__)
