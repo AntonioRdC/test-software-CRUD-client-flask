@@ -1,12 +1,7 @@
-"""
-Eneas Silva de Queiroz - pt-BR, UTF-8 - 22-08-2024
-Manipulando o banco de dados sqlite3 
-# test_models.py
-"""
-
 from flask_testing import TestCase
-from app import app, db  # Importa o app e o db diretamente
-from models.client_model import Client  # Importa a classe Client
+from src.app import app, db
+from src.models.client_model import Client
+
 
 class TestClientModel(TestCase):
 
@@ -26,17 +21,17 @@ class TestClientModel(TestCase):
 
     def test_create_client(self):
         client = Client(
-            name='Teste Cliente',
+            name='Test Client',
             cpf='12345678909',
-            street='Rua Teste',
+            street='Test Street',
             number='100',
-            complement='Apto 101',
-            neighborhood='Bairro Teste',
+            complement='Apt 101',
+            neighborhood='Test Neighborhood',
             zip_code='12345-678',
-            city='Cidade Teste',
+            city='Test City',
             state='SP',
             phone='123456789',
-            email='cliente@teste.com'
+            email='client@test.com'
         )
         db.session.add(client)
         db.session.commit()
@@ -44,17 +39,17 @@ class TestClientModel(TestCase):
 
     def test_get_client(self):
         client = Client(
-            name='Teste Cliente',
+            name='Test Client',
             cpf='12345678909',
-            street='Rua Teste',
+            street='Test Street',
             number='100',
-            complement='Apto 101',
-            neighborhood='Bairro Teste',
+            complement='Apt 101',
+            neighborhood='Test Neighborhood',
             zip_code='12345-678',
-            city='Cidade Teste',
+            city='Test City',
             state='SP',
             phone='123456789',
-            email='cliente@teste.com'
+            email='client@test.com'
         )
         db.session.add(client)
         db.session.commit()
@@ -63,42 +58,42 @@ class TestClientModel(TestCase):
 
     def test_update_client(self):
         client = Client(
-            name='Teste Cliente',
+            name='Test Client',
             cpf='12345678909',
-            street='Rua Teste',
+            street='Test Street',
             number='100',
-            complement='Apto 101',
-            neighborhood='Bairro Teste',
+            complement='Apt 101',
+            neighborhood='Test Neighborhood',
             zip_code='12345-678',
-            city='Cidade Teste',
+            city='Test City',
             state='SP',
             phone='123456789',
-            email='cliente@teste.com'
+            email='client@test.com'
         )
         db.session.add(client)
         db.session.commit()
 
-        client.name = 'Cliente Atualizado'
-        client.email = 'clienteatualizado@teste.com'
+        client.name = 'Updated Client'
+        client.email = 'updatedclient@test.com'
         db.session.commit()
 
-        client_atualizado = db.session.get(Client, client.id)
-        self.assertEqual(client_atualizado.name, 'Cliente Atualizado')
-        self.assertEqual(client_atualizado.email, 'clienteatualizado@teste.com')
+        updated_client = db.session.get(Client, client.id)
+        self.assertEqual(updated_client.name, 'Updated Client')
+        self.assertEqual(updated_client.email, 'updatedclient@test.com')
 
     def test_delete_client(self):
         client = Client(
-            name='Teste Cliente',
+            name='Test Client',
             cpf='12345678909',
-            street='Rua Teste',
+            street='Test Street',
             number='100',
-            complement='Apto 101',
-            neighborhood='Bairro Teste',
+            complement='Apt 101',
+            neighborhood='Test Neighborhood',
             zip_code='12345-678',
-            city='Cidade Teste',
+            city='Test City',
             state='SP',
             phone='123456789',
-            email='cliente@teste.com'
+            email='client@test.com'
         )
         db.session.add(client)
         db.session.commit()
@@ -106,42 +101,43 @@ class TestClientModel(TestCase):
         db.session.delete(client)
         db.session.commit()
 
-        client_deletado = db.session.get(Client, client.id)
-        self.assertIsNone(client_deletado)
+        deleted_client = db.session.get(Client, client.id)
+        self.assertIsNone(deleted_client)
 
     def test_get_all_clients(self):
         client1 = Client(
-            name='Teste Cliente 1',
+            name='Test Client 1',
             cpf='12345678909',
-            street='Rua Teste',
+            street='Test Street',
             number='100',
-            complement='Apto 101',
-            neighborhood='Bairro Teste',
+            complement='Apt 101',
+            neighborhood='Test Neighborhood',
             zip_code='12345-678',
-            city='Cidade Teste',
+            city='Test City',
             state='SP',
             phone='123456789',
-            email='cliente1@teste.com'
+            email='client1@test.com'
         )
         client2 = Client(
-            name='Teste Cliente 2',
+            name='Test Client 2',
             cpf='10987654321',
-            street='Rua Teste 2',
+            street='Test Street 2',
             number='200',
-            complement='Casa 2',
-            neighborhood='Bairro Teste 2',
+            complement='House 2',
+            neighborhood='Test Neighborhood 2',
             zip_code='87654-321',
-            city='Cidade Teste 2',
+            city='Test City 2',
             state='RJ',
             phone='987654321',
-            email='cliente2@teste.com'
+            email='client2@test.com'
         )
         db.session.add(client1)
         db.session.add(client2)
         db.session.commit()
 
-        todos_clients = Client.query.all()
-        self.assertEqual(len(todos_clients), 2)
+        all_clients = Client.query.all()
+        self.assertEqual(len(all_clients), 2)
+
 
 if __name__ == '__main__':
     import unittest

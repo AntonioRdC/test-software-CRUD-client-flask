@@ -18,6 +18,8 @@ class Client(db.Model):
     phone: Mapped[str] = mapped_column(String)
     email: Mapped[str] = mapped_column(String)
 
+    __table_args__ = {'extend_existing': True}
+
     def __init__(self, name, cpf, street, number, complement, neighborhood, zip_code, city, state, phone, email):
         self.name = name
         self.cpf = cpf
