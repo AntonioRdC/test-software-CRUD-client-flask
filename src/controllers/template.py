@@ -1,7 +1,7 @@
 from flask import Blueprint, request, render_template, redirect, url_for, flash
 from sqlalchemy.exc import IntegrityError
 from models.client_model import Client
-from validators.client_validator import format_text, validate_address, validate_cpf, validate_email, validate_name
+from validators.client_validator import validate_address, validate_cpf, validate_email, validate_name
 from database.database import db
 
 template = Blueprint('template', __name__)

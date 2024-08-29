@@ -2,6 +2,7 @@ from flask import Blueprint, request, jsonify, abort
 from sqlalchemy.exc import IntegrityError
 from models.client_model import Client
 from database.database import db
+from services.via_cep import get_address
 
 api = Blueprint('api', __name__)
 
@@ -102,3 +103,11 @@ def delete_client(id):
     db.session.delete(client)
     db.session.commit()
     return jsonify({}), 204
+
+
+@api.route('/api/fetch_address/<cep>', methods=['GET'])
+def fetch_address(cep):
+    address = get_address(cep)
+    if address:
+        return jsonify(address)
+    return jsonify({'error': 'CEP not found'}), 404

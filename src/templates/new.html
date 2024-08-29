@@ -10,7 +10,7 @@
     type="button"
     class="btn-close"
     data-bs-dismiss="alert"
-    aria-label="Close"
+    aria-label="Fechar"
   ></button>
 </div>
 <script>
@@ -48,6 +48,18 @@
       name="cpf"
       id="cpf"
       placeholder="Informe o CPF do cliente"
+      required
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="zip_code" class="form-label">CEP</label>
+    <input
+      class="form-control"
+      type="text"
+      name="zip_code"
+      id="zip_code"
+      placeholder="Informe o CEP do cliente"
       required
     />
   </div>
@@ -95,18 +107,6 @@
       name="neighborhood"
       id="neighborhood"
       placeholder="Informe o bairro do cliente"
-      required
-    />
-  </div>
-
-  <div class="mb-3">
-    <label for="zip_code" class="form-label">CEP</label>
-    <input
-      class="form-control"
-      type="text"
-      name="zip_code"
-      id="zip_code"
-      placeholder="Informe o CEP do cliente"
       required
     />
   </div>
@@ -215,4 +215,27 @@
     {% endfor %}
   </tbody>
 </table>
+
+<script>
+  document.getElementById("zip_code").addEventListener("blur", function () {
+    var cep = this.value.replace(/\D/g, "");
+    if (cep.length === 8) {
+      fetch(`api/fetch_address/${cep}`)
+        .then((response) => {
+          if (!response.ok) {
+            return;
+          }
+          return response.json();
+        })
+        .then((data) => {
+          document.getElementById("street").value = data.logradouro;
+          document.getElementById("neighborhood").value = data.bairro;
+          document.getElementById("city").value = data.localidade;
+          document.getElementById("state").value = data.uf;
+        })
+        .catch(() => {});
+    }
+  });
+</script>
+
 {% endblock %}
